@@ -1,6 +1,7 @@
 import pytest
+from random import randrange
 
-@pytest.fixture(scope='function')
-def say_hello():
-    print('hello')
-    return 14
+
+@pytest.fixture()
+def get_number():
+    return randrange(1, 1000, 5)

@@ -16,8 +16,16 @@ from src.pydantic_schemas.post import Post
 # print(resp.json())
 
 
-def test_getting_users_list(say_hello):
-    response = requests.get(SERVICE_URL)
-    test_object = Response(response)
+
+
+def test_getting_users_list(get_users, calculate):
+    test_object = Response(get_users)
     test_object.assert_status_code(200).validate(User)
-    print(say_hello)
+    print(calculate)
+    print(calculate(1, 20))
+
+
+def test_another(make_number):
+    assert 1 == 1
+    print(make_number)
+
