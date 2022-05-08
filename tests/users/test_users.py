@@ -1,3 +1,4 @@
+import pytest
 import requests
 from config import STATS_BASKER, SERVICE_URL
 from src.baseclasses.response import Response
@@ -16,16 +17,44 @@ from src.pydantic_schemas.post import Post
 # print(resp.json())
 
 
-
-
 def test_getting_users_list(get_users, calculate):
     test_object = Response(get_users)
     test_object.assert_status_code(200).validate(User)
-    print(calculate)
-    print(calculate(1, 20))
+    # print(calculate)
+    # print(calculate(1, 20))
 
 
+@pytest.mark.production
+# @pytest.mark.skip('Skip this test')  # skip test
 def test_another(make_number):
     assert 1 == 1
-    print(make_number)
+    # print(make_number)
 
+
+# def test_calculation_both_negative(calculate):
+#     print(calculate(-1, -2))
+#
+#
+# def test_calculation_one_negative(calculate):
+#     print(calculate(1, -2))
+#
+#
+# def test_calculation(calculate):
+#     print(calculate(1, 2))
+#
+#
+# def test_calculation_char(calculate):
+#     print(calculate('d', 2))
+#
+#
+# def test_calculation_two_char(calculate):
+#     print(calculate('d', 'f'))
+
+@pytest.mark.development
+@pytest.mark.parametrize('a, b, c', [(1, 2, 3),
+                                     (1, -2, -1),
+                                     (-1, -2, -3),
+                                     ('b', -2, None),
+                                     ('v', 's', None)])
+def calculator(a, b, c, calculate):
+    assert calculate(a, b) == c

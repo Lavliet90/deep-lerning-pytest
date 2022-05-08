@@ -8,7 +8,7 @@ from config import SERVICE_URL
 
 @pytest.fixture(autouse=True)
 def say_hello():
-    print('hello')
+    # print('hello')
     return 14
 
 
@@ -18,7 +18,9 @@ def get_users():
 
 
 def _calculate(a, b):
-    return a + b
+    if isinstance(a, int) and isinstance(b, int):
+        return a + b
+
 
 
 @pytest.fixture()
@@ -28,7 +30,7 @@ def calculate():
 
 @pytest.fixture()
 def make_number():
-    print(' I\'m getting number')
+    # print(' I\'m getting number')
     number = randrange(1, 1000, 5)
     yield number
-    print(f' Number at home {number}')
+    # print(f' Number at home {number}')
