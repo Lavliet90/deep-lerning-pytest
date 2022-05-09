@@ -31,25 +31,6 @@ def test_another(make_number):
     # print(make_number)
 
 
-# def test_calculation_both_negative(calculate):
-#     print(calculate(-1, -2))
-#
-#
-# def test_calculation_one_negative(calculate):
-#     print(calculate(1, -2))
-#
-#
-# def test_calculation(calculate):
-#     print(calculate(1, 2))
-#
-#
-# def test_calculation_char(calculate):
-#     print(calculate('d', 2))
-#
-#
-# def test_calculation_two_char(calculate):
-#     print(calculate('d', 'f'))
-
 @pytest.mark.development
 @pytest.mark.parametrize('a, b, c', [(1, 2, 3),
                                      (1, -2, -1),

@@ -1,9 +1,13 @@
-from random import randrange
-
 import pytest
 import requests
-
+from random import randrange
 from config import SERVICE_URL
+from src.genetators.player import Player
+
+
+@pytest.fixture()
+def get_player_generator():
+    return Player
 
 
 @pytest.fixture(autouse=True)
@@ -20,7 +24,6 @@ def get_users():
 def _calculate(a, b):
     if isinstance(a, int) and isinstance(b, int):
         return a + b
-
 
 
 @pytest.fixture()
